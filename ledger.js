@@ -1,23 +1,27 @@
 const fs = require('fs');
-var db = fs.readFileSync("db.json")
+var db = JSON.parse(fs.readFileSync("./db.json"));
+function saveDB(){
+    fs.writeFileSync("./db.json", JSON.stringify(db));
+}
 function getUser(name) {
-    for(user in db.users) {
-        if(user.username == "username") {
-            return user;
+    console.log(name);
+    for(var i =0 ;i < db.users.length;i++){
+        if(db.users[i].username == name) {
+            return db.users[i];
         }
     }
 }
-module.exports = function (database) {
+module.exports = {
    
-    const addUser = function (name) {
+    addUser:function (name) {
         db.users.push({
-            username: msg.author,
+            username:name,
             debts: [],
             balance:0
         })
-        fs.writeFileSync("db.json", db);
-    }
-    const makeGame = function(players,amount,rebuy) {
+        saveDB();
+    },
+    makeGame:function(players,amount,rebuy) {
         db.games.push({
             id:db.currentGameID + 1,
             players:players,
@@ -25,9 +29,9 @@ module.exports = function (database) {
             rebuy_amount:rebuy
         })
         db.currentGameID = db.currentGameID + 1;
-        fs.writeFileSync("db.json",db);
-    }
-    const addDebt = function(name1,name2,amount) {
+        saveDB();
+    },
+    addDebt:function(name1,name2,amount) {
         var from = getUser(name1);
         var to = getUser(name2);
         from.debts.push(
@@ -36,8 +40,7 @@ module.exports = function (database) {
              amount:amount
             }
         )
-       
+        saveDB();
     }
-    const 
     
 }
