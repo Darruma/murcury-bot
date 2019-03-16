@@ -1,1 +1,1 @@
-{"users":[{"username":"355085571762290689","debts":[],"balance":0},{"username":"144166207979782144","debts":[{"debt_to":"355085571762290689"},{"debt_to":"355085571762290689","amount":"2"}],"balance":0}]}
+{"users":[{"username":"355085571762290689","debts":[],"balance":0},{"username":"144166207979782144","debts":[{"debt_to":"355085571762290689","amount":"2"},{"debt_to":"355085571762290689","amount":"100"}],"balance":0}]}

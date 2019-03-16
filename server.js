@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const ledger = require('./ledger.js')
-const token = "NTU2NTgyMjM2NjgyNDUyOTkz.D271QA.dxMf3YzvXZkq2sl5V8JxPRbFtgo"
+const token = "NTU2NTgyMjM2NjgyNDUyOTkz.D28Wpw.QUZ2edYBzsvdZWWSVEuX_8TIYJA"
 
 function between_str(string ,str1,str2 ) {
   string.substring(
@@ -34,7 +34,10 @@ client.on('message', msg => {
     console.log(ids);
     var args = msg.content.slice(msg.content.indexOf("!debtadd") + 8).split(" ").filter(i => i != "").map(e => e.toString());
     ledger.addDebt(ids[0],ids[1],args[2]);
-    msg.channel.send("<@" + ids[0] + "> -> <@" + ids[1] + "> £" + args[2]);
+    
+  }
+  if(msg.content === "!debts") {
+    msg.channel.send(ledger.getDebts());
   }
 });
 
