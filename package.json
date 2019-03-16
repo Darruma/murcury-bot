@@ -1,0 +1,23 @@
+{
+  "name": "murcury-bot",
+  "version": "1.0.0",
+  "description": "Murcury_bot",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Darruma/murcury-bot.git"
+  },
+  "author": "Darruma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Darruma/murcury-bot/issues"
+  },
+  "homepage": "https://github.com/Darruma/murcury-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2"
+  }
+}
