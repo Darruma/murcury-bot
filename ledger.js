@@ -4,12 +4,12 @@ function saveDB() {
     fs.writeFileSync("./db.json", JSON.stringify(db));
 }
 function getUser(name) {
-    console.log(name);
     for (var i = 0; i < db.users.length; i++) {
         if (db.users[i].username == name) {
             return db.users[i];
         }
     }
+    return null;
 }
 module.exports = {
 
@@ -20,6 +20,15 @@ module.exports = {
             balance: 0
         })
         saveDB();
+    },
+    getBalance:function(id){
+        var user = getUser(id);
+        if(user == null) {
+            return "error"
+        }
+        var balance = getUser(id).debts.reduce((acc,val) => acc + val.amount);
+        balance += db.users.map(user => user.debts.find(debt => debt.debt_to == id)).reduce((acc,val) => acc + val);
+        return balance;
     },
     getDebts: function () {
         debts = "----------------- \n"
@@ -34,7 +43,7 @@ module.exports = {
     addDebt: function (name1, name2, amount) {
         var from = getUser(name1);
         var to = getUser(name2);
-        if (from == undefined || to == undefined) {
+        if (from == null || to == null) {
             return;
         }
         var already_debt = false;
