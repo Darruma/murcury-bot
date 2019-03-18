@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const ledger = require('./ledger.js')
+require('dotenv').config()
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
