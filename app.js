@@ -36,7 +36,8 @@ client.on('message', msg => {
   else if (msg.content === "!debts") {
     msg.channel.send(ledger.getDebts());
   }
-  else if (msg.content === "!debtdelete") {
+  else if (msg.content.includes("!debtdelete")){
+   
     const ids = msg.mentions.members.keyArray();
     ledger.deleteDebt(ids[0], ids[1]);
   }
