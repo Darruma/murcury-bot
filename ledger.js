@@ -29,7 +29,7 @@ module.exports = {
         if (user == null) {
             return "error"
         }
-        var balance = Number(module.exports.getUser(id).debts.reduce((acc, val) => acc + val.amount,0));
+        var balance =  -1 *Number(module.exports.getUser(id).debts.reduce((acc, val) => acc + val.amount,0));
         balance += Number(db.users.map(user => user.debts.find(debt => debt.debt_to == id)).filter(d => d != null).reduce((acc, val) => acc + val.amount,0));
         console.log(balance);
         return balance;
