@@ -3,34 +3,35 @@ var db = JSON.parse(fs.readFileSync("./db.json"));
 
 module.exports = {
     saveDB:function() {
-        fs.writeFileSync("./db.json", JSON.stringify(db));
+        fs.writeFileSync("./db.json", JSON.stringify(db,null,2));
     },
     deleteAll: function() {
         db.users = []
-        saveDB();
+        module.exports.saveDB();
     },
     getUser: function (name) {
-        db.users.find(user => user.username == name);
-        return null;
+        return db.users.find(user => user.username == name);
     },
     mentionUser:function(id) {
         return "<@" + id + ">"
     },
-    addUser: function (name) {
+    addUser: function (id,username) {
         db.users.push({
-            username: name,
+            name:username,
+            username: id,
             debts: [],
             balance: 0
         })
-        saveDB();
+        module.exports.saveDB();
     },
     getBalance: function (id) {
-        var user = getUser(id);
+        var user = module.exports.getUser(id);
         if (user == null) {
             return "error"
         }
-        var balance = getUser(id).debts.reduce((acc, val) => acc + val.amount);
-        balance += db.users.map(user => user.debts.find(debt => debt.debt_to == id)).reduce((acc, val) => acc + val);
+        var balance = Number(module.exports.getUser(id).debts.reduce((acc, val) => acc + val.amount,0));
+        balance += Number(db.users.map(user => user.debts.find(debt => debt.debt_to == id)).filter(d => d != null).reduce((acc, val) => acc + val.amount,0));
+        console.log(balance);
         return balance;
     },
     getDebts: function () {
@@ -38,14 +39,14 @@ module.exports = {
         for (var i = 0; i < db.users.length; i++) {
             for (var j = 0; j < db.users[i].debts.length; j++) {
                 var debt = db.users[i].debts[j];
-                debts += mentionUser(db.users[i].username) + " -> " + mentionUser(debt.debt_to) + "£" + debt.amount + "\n";
+                debts += module.exports.mentionUser(db.users[i].username) + " -> " + module.exports.mentionUser(debt.debt_to) + "£" + debt.amount + "\n";
             }
         }
         return debts;
     },
     addDebt: function (name1, name2, amount) {
-        var from = getUser(name1);
-        var to = getUser(name2);
+        var from = module.exports.getUser(name1);
+        var to = module.exports.getUser(name2);
         if (from == null || to == null) {
             return;
         }
@@ -66,11 +67,11 @@ module.exports = {
             )
         }
 
-        saveDB();
+        module.exports.saveDB();
     },
     deleteDebt: function (name1, name2) {
-        var from = getUser(name1);
-        var to = getUser(name2);
+        var from = module.exports.getUser(name1);
+        var to = module.exports.getUser(name2);
         if (from == undefined || to == undefined) {
             return;
         }
@@ -79,6 +80,6 @@ module.exports = {
                 from.debts = from.debts.splice(i);
             }
         }
-        saveDB();
+        module.exports.saveDB();
     },
 }

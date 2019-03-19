@@ -1,1 +1,100 @@
-{"users":[{"username":"355085571762290689","debts":[],"balance":0},{"username":"144166207979782144","debts":[{"debt_to":"355085571762290689","amount":"2"},{"debt_to":"355085571762290689","amount":"100"}],"balance":0}]}
+{
+  "users": [
+    {
+      "name": "Ro",
+      "username": "378637755561017348",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "Mclovin",
+      "username": "280449444699308032",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "Tw4rd_",
+      "username": "232259516090155018",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "sat1011",
+      "username": "195276447294685184",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "Thehazzman2",
+      "username": "192637754104872960",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "Blountyhunter",
+      "username": "140426463424806913",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "MaxAskew",
+      "username": "144166207979782144",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "Tatsumaki",
+      "username": "172002275412279296",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "DDM",
+      "username": "182516404308803585",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "Themoopanator",
+      "username": "195182052960763904",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "Groovy",
+      "username": "234395307759108106",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "HAAX24",
+      "username": "243394058318381056",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "Polynomial-C",
+      "username": "276396056139268096",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "Darruma",
+      "username": "355085571762290689",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "Bin Man",
+      "username": "412697552291364864",
+      "debts": [],
+      "balance": 0
+    },
+    {
+      "name": "murcury-bot",
+      "username": "556582236682452993",
+      "debts": [],
+      "balance": 0
+    }
+  ]
+}
