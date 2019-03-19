@@ -39,7 +39,7 @@ module.exports = {
         for (var i = 0; i < db.users.length; i++) {
             for (var j = 0; j < db.users[i].debts.length; j++) {
                 var debt = db.users[i].debts[j];
-                debts += module.exports.mentionUser(db.users[i].username) + " -> " + module.exports.mentionUser(debt.debt_to) + "£" + debt.amount + "\n";
+                debts += module.exports.mentionUser(db.users[i].username) + " -> " + module.exports.mentionUser(debt.debt_to) + " £" + debt.amount + "\n";
             }
         }
         return debts;
@@ -79,6 +79,7 @@ module.exports = {
         for (let i = 0; i < from.debts.length; i++) {
             if (from.debts[i].debt_to == to.username) {
                 from.debts = from.debts.splice(i);
+                console.log(debts);
             }
         }
         module.exports.saveDB();
