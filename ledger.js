@@ -73,6 +73,7 @@ module.exports = {
         var from = module.exports.getUser(name1);
         var to = module.exports.getUser(name2);
         if (from == undefined || to == undefined) {
+            console.log("error");
             return;
         }
         for (let i = 0; i < from.debts.length; i++) {
